@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온라인 쇼핑몰</title> <!--홈 화면 페이지-->
+    <link rel="stylesheet" href="2.styles.css">
+</head>
+<header>
+    <h1 onclick="window.location.href='10.homePage.html'">온라인쇼핑몰</h1>
+    <nav>
+        <div calss = "signIP">
+            <a href="6.loginPage.html">로그인</a>
+            <a href="7.signup.html">회원가입</a>
+        </div>
+    </nav>
+</header>
+<div class="nav-container">
+    <div class="dropdown">
+        <button class="dropbtn">메뉴</button>
+        <div class="category-btn">
+            <a href="1.onlineSellPage.html">1.onlineSellPage</a>
+            <a href="#">항목 2</a>
+            <a href="#">항목 3</a>
+            <a href="#">항목 4</a>
+            <a href="#">항목 5</a>
+            <a href="#">항목 6</a>
+            <a href="#">항목 7</a>
+            <a href="#">항목 8</a>
+            <a href="#">항목 9</a>
+            <a href="#">항목 10</a>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="검색어를 입력하세요...">
+        <button class="search-button">검색</button>
+    </div>
+</div>
+<div class="search-results">
+    <!-- 검색 결과가 여기에 표시됩니다 -->
+</div>
+
+
+<main>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="francesco-ungaro-8x4_rmUbTC4-unsplash.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="ingmar-h-iwPGTHBlYyw-unsplash.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="lorenzo-marucchi-PoQn2M2RMTo-unsplash.jpg" alt="Image 3"></div>
+        </div>
+        <button class="prev" onclick="prevSlide()">◀</button>
+        <button class="next" onclick="nextSlide()">▶</button>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 온라인 쇼핑몰</p>
+</footer>
+<script src="3.scripts.js"></script>
+</body>
+
+</html>

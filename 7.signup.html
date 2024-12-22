@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입</title>
+    <link rel="stylesheet" href="2.styles.css">
+</head>
+<body>
+    <header>
+        <h1>온라인 쇼핑몰</h1>
+        <nav>
+            <a href="10.homePage.html">홈</a>
+            <a href="#">상품 목록</a>
+            <a href="#">장바구니</a>
+            <a href="6.loginPage.html">로그인</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="signup-container">
+            <h2>회원 가입</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="username">사용자 이름</label>
+                    <input type="text" id="username" name="username" placeholder="사용자 이름을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">비밀번호 확인</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="비밀번호를 다시 입력하세요" required>
+                </div>
+                <button type="submit">회원 가입</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 온라인 쇼핑몰</p>
+    </footer>
+
+    <script src="9.testServer.js"></script> 
+</body>
+</html>

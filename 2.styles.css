@@ -1,0 +1,394 @@
+/* 기본 스타일링 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.signIP {
+    display: flex;
+    justify-content: space-between;
+}
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 70%;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#cart {
+    width: 25%;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-items li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/** 회원가입 css*/
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.signup-container .form-group {
+    margin-bottom: 15px;
+}
+
+.signup-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signup-container button:hover {
+    background-color: #218838;
+}
+
+/* 전체 슬라이더 컨테이너 */
+.slider-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 슬라이드 컨테이너 */
+.slider-container {
+    width: 100%;
+    /* 컨테이너 너비 */
+    overflow: hidden;
+    /* 화면 밖의 내용 숨김 */
+    position: relative;
+    /* 절대 위치를 위한 기준 */
+}
+
+/* 슬라이드 전체를 감싸는 요소 */
+.slider {
+    display: flex;
+    /* 슬라이드를 가로로 나열 */
+    position: relative;
+    width: 100%;
+}
+
+/* 개별 슬라이드 */
+.slide {
+    flex: 0 0 100%;
+    /* 각 슬라이드가 컨테이너의 100%를 차지 */
+    display: none;
+    /* 기본적으로 숨김 */
+    justify-content: center;
+    /* 이미지 가로 중앙 정렬 */
+    align-items: center;
+    /* 이미지 세로 중앙 정렬 */
+    box-sizing: border-box;
+    /* 패딩 포함 크기 계산 */
+}
+
+/* 활성화된 슬라이드 */
+.slide.active {
+    display: flex;
+    /* 활성화된 슬라이드는 보이도록 설정 */
+}
+
+/* 슬라이드 이미지 */
+.slide img {
+    max-width: 100%;
+    /* 이미지가 슬라이드 너비를 넘지 않도록 */
+    max-height: 100%;
+    /* 이미지가 슬라이드 높이를 넘지 않도록 */
+    object-fit: contain;
+    /* 이미지 비율 유지 */
+}
+
+/* 버튼 스타일 */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/*메뉴바*/
+.menu-bar {
+    display: flex;
+    align-items: center;
+}
+
+#categories {
+    display: none;
+    margin-left: 20px;
+}
+
+#categories ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#categories li {
+    margin: 5px 0;
+}
+
+#categories a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #444;
+    border-radius: 5px;
+}
+
+#categories a:hover {
+    background-color: #666;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.category-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-menu li {
+    margin-bottom: 10px;
+}
+
+.category-menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 16px;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.category-menu a:hover {
+    background-color: #f0f0f0;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.category-btn {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.category-btn a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .category-btn {
+    display: block;
+}
+
+.category-btn a:hover {
+    background-color: #f1f1f1;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 300px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+
+.search-results {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: none;
+    background-color: white;
+}
+
+.result-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s;
+}
+
+.result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.result-item p {
+    margin: 0;
+    color: #666;
+}
+
+.no-results {
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}
+
+.highlight {
+    background-color: yellow;
+    padding: 2px;
+    border-radius: 2px;
+}

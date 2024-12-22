@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>드롭다운 메뉴와 검색 시스템</title>
+    <style>
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 300px;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #45a049;
+        }
+
+        .search-results {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: none;
+            background-color: white;
+        }
+
+        .result-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+
+        .result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .result-item p {
+            margin: 0;
+            color: #666;
+        }
+
+        .no-results {
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            padding: 2px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="dropdown">
+            <button class="dropbtn">메뉴</button>
+            <div class="dropdown-content">
+                <a href="#" data-item="item1">항목 1</a>
+                <a href="#" data-item="item2">항목 2</a>
+                <a href="#" data-item="item3">항목 3</a>
+                <a href="#" data-item="item4">항목 4</a>
+                <a href="#" data-item="item5">항목 5</a>
+                <a href="#" data-item="item6">항목 6</a>
+                <a href="#" data-item="item7">항목 7</a>
+                <a href="#" data-item="item8">항목 8</a>
+                <a href="#" data-item="item9">항목 9</a>
+                <a href="#" data-item="item10">항목 10</a>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="검색어를 입력하세요...">
+            <button class="search-button">검색</button>
+        </div>
+    </div>
+
+    <div class="search-results">
+        <!-- 검색 결과가 여기에 표시됩니다 -->
+    </div>
+
+    <script>
+        // 샘플 데이터
+        const items = [
+            { id: 'item1', name: '항목 1', description: '첫 번째 항목에 대한 설명입니다.' },
+            { id: 'item2', name: '항목 2', description: '두 번째 항목에 대한 설명입니다.' },
+            { id: 'item3', name: '항목 3', description: '세 번째 항목에 대한 설명입니다.' },
+            { id: 'item4', name: '항목 4', description: '네 번째 항목에 대한 설명입니다.' },
+            { id: 'item5', name: '항목 5', description: '다섯 번째 항목에 대한 설명입니다.' },
+            { id: 'item6', name: '항목 6', description: '여섯 번째 항목에 대한 설명입니다.' },
+            { id: 'item7', name: '항목 7', description: '일곱 번째 항목에 대한 설명입니다.' },
+            { id: 'item8', name: '항목 8', description: '여덟 번째 항목에 대한 설명입니다.' },
+            { id: 'item9', name: '항목 9', description: '아홉 번째 항목에 대한 설명입니다.' },
+            { id: 'item10', name: '항목 10', description: '열 번째 항목에 대한 설명입니다.' },
+        ];
+
+        const searchInput = document.querySelector('.search-input');
+        const searchButton = document.querySelector('.search-button');
+        const searchResults = document.querySelector('.search-results');
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = items.filter(item => 
+                item.name.toLowerCase().includes(searchTerm) || 
+                item.description.toLowerCase().includes(searchTerm)
+            );
+
+            displayResults(results, searchTerm);
+        }
+
+        function displayResults(results, searchTerm) {
+            searchResults.style.display = 'block';
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">검색 결과가 없습니다.</div>';
+                return;
+            }
+
+            const resultsHTML = results.map(item => {
+                const highlightedName = highlightText(item.name, searchTerm);
+                const highlightedDescription = highlightText(item.description, searchTerm);
+                
+                return `
+                    <div class="result-item">
+                        <h3>${highlightedName}</h3>
+                        <p>${highlightedDescription}</p>
+                    </div>
+                `;
+            }).join('');
+
+            searchResults.innerHTML = resultsHTML;
+        }
+
+        function highlightText(text, searchTerm) {
+            if (!searchTerm) return text;
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        // 이벤트 리스너 등록
+        searchButton.addEventListener('click', performSearch);
+        
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // 실시간 검색 구현
+        searchInput.addEventListener('input', performSearch);
+    </script>
+</body>
+</html>

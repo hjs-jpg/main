@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제 페이지</title>
+    <link rel="stylesheet" href="2.styles.css">
+</head>
+<body>
+    <main>
+        <h1>결제 페이지</h1>
+        <p>총 결제 금액: <span id="payment-amount">0원</span></p>
+        <button onclick="processPayment()">결제하기</button>
+
+        <script>
+            // 로컬 저장소에서 총 금액을 가져오기
+            const totalPrice = localStorage.getItem('totalPrice');
+            document.getElementById('payment-amount').textContent = `${totalPrice}원`;
+
+            // 결제 처리 함수
+            function processPayment() {
+                alert('결제가 완료되었습니다!');
+                localStorage.removeItem('totalPrice');  // 결제 후 금액 초기화
+                window.location.href = '10.homePage.html';  // 쇼핑몰 페이지로 돌아가기
+            }
+        </script>
+    </main>
+</body>
+</html>
