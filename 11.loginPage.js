@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event){
     const password = document.getElementById("password").value;
     if (username ===""||password ===""){
         alert("입력이 안되었습니다. 입력해주세요");
-        return;
+        return; ;;;;;;;;;;;;;
     }
     console.log("로그인 정보:", {username, password});
     alert("로그인 성공!");
